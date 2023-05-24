@@ -1,5 +1,5 @@
 module.exports = {
-  // https://eslint.org/docs/user-guide/configuring#configuration-cascading-and-hierarchy
+   // https://eslint.org/docs/user-guide/configuring#configuration-cascading-and-hierarchy
   // This option interrupts the configuration hierarchy at this file
   root: true,
 
@@ -69,6 +69,15 @@ module.exports = {
       },
       rules: {
         '@typescript-eslint/member-delimiter-style': 'warn',
+        '@typescript-eslint/no-shadow': 'error',
+        // this rule, if on, would require explicit return type on the `render` function
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        /**
+         * in plain CommonJS modules, you can't use `import foo = require('foo')` to pass this rule,
+         * so it has to be disabled
+         */
+        '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
       },
     },
     {
@@ -79,6 +88,7 @@ module.exports = {
       },
       rules: {
         'vue/space-infix-ops': 'error',
+        'vue/multi-word-component-names': 'off',
       },
     },
     {
@@ -99,7 +109,6 @@ module.exports = {
     'max-classes-per-file': 'off',
 
     'no-shadow': 'off',
-    '@typescript-eslint/no-shadow': 'error',
 
     'import/first': 'off',
     'import/namespace': 'error',
@@ -109,21 +118,11 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/no-extraneous-dependencies': 'off',
     'import/prefer-default-export': 'off',
-
-    // The core 'import/named' rules
-    // does not work with type definitions
     'import/named': 'off',
 
     'prefer-promise-reject-errors': 'off',
 
     quotes: ['warn', 'single', { avoidEscape: true }],
-
-    // this rule, if on, would require explicit return type on the `render` function
-    '@typescript-eslint/explicit-function-return-type': 'off',
-
-    // in plain CommonJS modules, you can't use `import foo = require('foo')` to pass this rule
-    // , so it has to be disabled
-    '@typescript-eslint/no-var-requires': 'off',
 
     // The core 'no-unused-vars' rules (in the eslint:recommended ruleset)
     // does not work with type definitions
@@ -131,10 +130,6 @@ module.exports = {
 
     // allow debugger during development only
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-
-    'vue/multi-word-component-names': 'off',
-
-    '@typescript-eslint/no-explicit-any': 'off',
 
     'arrow-parens': ['error', 'as-needed'],
 
@@ -160,5 +155,5 @@ module.exports = {
 
     // jest
     'jest/no-jest-import': 'error',
-  },
-};
+    },
+  };
