@@ -26,6 +26,9 @@ module.exports = {
     // ESLint typescript rules
     'plugin:@typescript-eslint/recommended',
 
+    'plugin:import/errors',
+    'plugin:import/warnings',
+
     // Uncomment any of the lines below to choose desired strictness,
     // but leave only one uncommented!
     // See https://eslint.vuejs.org/rules/#available-rules
@@ -39,6 +42,8 @@ module.exports = {
   plugins: [
     // required to apply rules which need type information
     '@typescript-eslint',
+
+    'import',
 
     // https://eslint.vuejs.org/user-guide/#why-doesn-t-it-work-on-vue-files
     // required to lint *.vue files
@@ -110,15 +115,30 @@ module.exports = {
 
     'no-shadow': 'off',
 
+    // import
     'import/first': 'off',
     'import/namespace': 'error',
     'import/default': 'error',
     'import/export': 'error',
     'import/extensions': 'off',
+    'import/first': 'error',
     'import/no-unresolved': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'import/order': ['error', {
+      'newlines-between': 'always',
+      'alphabetize': {
+        'order': 'asc',
+        'caseInsensitive': false
+      },
+    }],
     'import/prefer-default-export': 'off',
     'import/named': 'off',
+    'sort-imports': ['error', {
+      'ignoreDeclarationSort': true
+    }],
+    'object-curly-newline': ['error', {
+      'ImportDeclaration': { 'multiline': true, 'minProperties': 2 }
+    }],
 
     'prefer-promise-reject-errors': 'off',
 
