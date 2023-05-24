@@ -14,6 +14,7 @@ module.exports = {
     es2021: true,
     node: true,
     'vue/setup-compiler-macros': true,
+    'jest/globals': true,
   },
 
   // Rules order is important, please avoid shuffling them
@@ -43,6 +44,7 @@ module.exports = {
     // required to lint *.vue files
     'vue',
 
+    'jest',
   ],
 
   globals: {
@@ -77,6 +79,13 @@ module.exports = {
       },
       rules: {
         'vue/space-infix-ops': 'error',
+      },
+    },
+    {
+      files: ['**/*.test.js', '**/*.spec.js', '**/*.test.ts', '**/*.spec.ts'],
+      extends: ['plugin:jest/recommended'],
+      rules: {
+        'jest/no-jest-import': 'off',
       },
     },
   ],
@@ -148,5 +157,8 @@ module.exports = {
     curly: ['error', 'all'],
 
     'dot-notation': ['error', { allowPattern: '^_[a-z, 0-9]+$' }],
+
+    // jest
+    'jest/no-jest-import': 'error',
   },
 };
