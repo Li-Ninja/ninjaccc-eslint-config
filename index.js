@@ -1,12 +1,12 @@
 module.exports = {
-   // https://eslint.org/docs/user-guide/configuring#configuration-cascading-and-hierarchy
+  // https://eslint.org/docs/user-guide/configuring#configuration-cascading-and-hierarchy
   // This option interrupts the configuration hierarchy at this file
   root: true,
 
-  // https://eslint.vuejs.org/user-guide/#how-to-use-a-custom-parser
   parserOptions: {
-    parser: require.resolve('@typescript-eslint/parser'),
-    extraFileExtensions: ['.vue'],
+    project: 'tsconfig.json',
+    tsconfigRootDir: __dirname,
+    sourceType: 'module',
   },
 
   env: {
@@ -14,7 +14,7 @@ module.exports = {
     es2021: true,
     node: true,
     'vue/setup-compiler-macros': true,
-    'jest/globals': true,
+    jest: true,
   },
 
   // Rules order is important, please avoid shuffling them
@@ -73,7 +73,11 @@ module.exports = {
         node: true,
       },
       rules: {
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+        '@typescript-eslint/interface-name-prefix': 'off',
         '@typescript-eslint/member-delimiter-style': 'warn',
+        '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-shadow': 'error',
         // this rule, if on, would require explicit return type on the `render` function
         '@typescript-eslint/explicit-function-return-type': 'off',
@@ -86,10 +90,19 @@ module.exports = {
       },
     },
     {
+      files: ['*.ts', '*.tsx'],
+      parser: '@typescript-eslint/parser',
+    },
+    {
       files: ['*.vue'],
       env: {
         browser: true,
         node: true,
+      },
+      parser: 'vue-eslint-parser',
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+        extraFileExtensions: ['.vue'],
       },
       rules: {
         'vue/space-infix-ops': 'error',
