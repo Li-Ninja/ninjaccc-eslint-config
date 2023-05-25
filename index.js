@@ -17,8 +17,6 @@ module.exports = {
 
   // Rules order is important, please avoid shuffling them
   extends: [
-    'plugin:import/errors',
-    'plugin:import/warnings',
     'plugin:jest/recommended',
     'airbnb-base',
   ],
