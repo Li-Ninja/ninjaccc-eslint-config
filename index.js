@@ -119,7 +119,6 @@ module.exports = {
     'no-shadow': 'off',
 
     // import
-    'import/first': 'off',
     'import/namespace': 'error',
     'import/default': 'error',
     'import/export': 'error',
