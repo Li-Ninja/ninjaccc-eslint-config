@@ -17,36 +17,13 @@ module.exports = {
 
   // Rules order is important, please avoid shuffling them
   extends: [
-    // Base ESLint recommended rules
-    // 'eslint:recommended',
-
-    // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#usage
-    // ESLint typescript rules
-    'plugin:@typescript-eslint/recommended',
-
     'plugin:import/errors',
     'plugin:import/warnings',
-
-    // Uncomment any of the lines below to choose desired strictness,
-    // but leave only one uncommented!
-    // See https://eslint.vuejs.org/rules/#available-rules
-    // 'plugin:vue/vue3-essential', // Priority A: Essential (Error Prevention)
-    'plugin:vue/vue3-strongly-recommended', // Priority B: Strongly Recommended (Improving Readability)
-
     'airbnb-base',
-
   ],
 
   plugins: [
-    // required to apply rules which need type information
-    '@typescript-eslint',
-
     'import',
-
-    // https://eslint.vuejs.org/user-guide/#why-doesn-t-it-work-on-vue-files
-    // required to lint *.vue files
-    'vue',
-
     'jest',
   ],
 
@@ -70,6 +47,15 @@ module.exports = {
         browser: true,
         node: true,
       },
+      plugins: [
+        // required to apply rules which need type information
+        '@typescript-eslint',
+      ],
+      extends: [
+        // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#usage
+        // ESLint typescript rules
+        'plugin:@typescript-eslint/recommended',
+      ],
       rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/explicit-module-boundary-types': 'off',
@@ -102,6 +88,12 @@ module.exports = {
         parser: '@typescript-eslint/parser',
         extraFileExtensions: ['.vue'],
       },
+      plugins: [
+        'vue',
+      ],
+      extends: [
+        'plugin:vue/vue3-strongly-recommended', // Priority B: Strongly Recommended (Improving Readability)
+      ],
       rules: {
         'vue/space-infix-ops': 'error',
         'vue/multi-word-component-names': 'off',
