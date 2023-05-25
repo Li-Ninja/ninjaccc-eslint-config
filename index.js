@@ -117,7 +117,6 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/no-extraneous-dependencies': 'off',
     'import/order': ['error', {
-      'newlines-between': 'always',
       'alphabetize': {
         'order': 'asc',
         'caseInsensitive': false
@@ -128,9 +127,14 @@ module.exports = {
     'sort-imports': ['error', {
       'ignoreDeclarationSort': true
     }],
-    'object-curly-newline': ['error', {
-      'ImportDeclaration': { 'multiline': true, 'minProperties': 2 }
-    }],
+
+    'object-curly-newline': [
+      'error',
+      {
+        ImportDeclaration: { multiline: true, minProperties: 2 },
+        ExportDeclaration: { multiline: true, minProperties: 2 },
+      },
+    ],
 
     'prefer-promise-reject-errors': 'off',
 
