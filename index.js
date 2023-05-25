@@ -178,5 +178,5 @@ module.exports = {
 
     // jest
     'jest/no-jest-import': 'error',
-    },
-  };
+  },
+};
