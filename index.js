@@ -1,3 +1,4 @@
+/** @type { import('eslint').Linter.Config } */
 module.exports = {
   // https://eslint.org/docs/user-guide/configuring#configuration-cascading-and-hierarchy
   // This option interrupts the configuration hierarchy at this file
@@ -12,18 +13,15 @@ module.exports = {
     es2021: true,
     node: true,
     'vue/setup-compiler-macros': true,
-    jest: true,
   },
 
   // Rules order is important, please avoid shuffling them
   extends: [
-    'plugin:jest/recommended',
     'airbnb-base',
   ],
 
   plugins: [
     'import',
-    'jest',
   ],
 
   globals: {
@@ -98,12 +96,6 @@ module.exports = {
         'vue/multi-word-component-names': 'off',
       },
     },
-    {
-      files: ['**/*.test.js', '**/*.spec.js', '**/*.test.ts', '**/*.spec.ts'],
-      rules: {
-        'jest/no-jest-import': 'off',
-      },
-    },
   ],
 
   // add your custom rules here
@@ -172,8 +164,5 @@ module.exports = {
     curly: ['error', 'all'],
 
     'dot-notation': ['error', { allowPattern: '^_[a-z, 0-9]+$' }],
-
-    // jest
-    'jest/no-jest-import': 'error',
   },
 };
