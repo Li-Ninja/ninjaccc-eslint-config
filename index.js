@@ -19,6 +19,7 @@ module.exports = {
   extends: [
     'plugin:import/errors',
     'plugin:import/warnings',
+    'plugin:jest/recommended',
     'airbnb-base',
   ],
 
@@ -101,7 +102,6 @@ module.exports = {
     },
     {
       files: ['**/*.test.js', '**/*.spec.js', '**/*.test.ts', '**/*.spec.ts'],
-      extends: ['plugin:jest/recommended'],
       rules: {
         'jest/no-jest-import': 'off',
       },
